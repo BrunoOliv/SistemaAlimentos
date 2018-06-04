@@ -3,6 +3,10 @@ import java.util.List;
 
 public class Cliente extends Fisica {
 
+    public Cliente(String nome, String usuario, String senha) {
+        super(nome, usuario, senha);
+    }
+    
     public Cliente(BD bd) {
         super(bd);
     }
@@ -16,6 +20,13 @@ public class Cliente extends Fisica {
         }else{
             System.out.println("O cliente não doi armazenado!");
         }
+    }
+    
+    @Override
+    public void atualizar () {
+        super.inserir();
+        System.out.println("Atualizado com sucesso!");
+        
     }
     
     @Override

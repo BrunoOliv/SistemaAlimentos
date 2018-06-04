@@ -74,4 +74,29 @@ public class Opcao {
             }
         }
     }
+    
+    public void tratarPessoa(int escolhaPessoa, int escolhaOpcao, BD bd) {
+        switch (escolhaPessoa) {
+                case 1: {
+                    Cliente cliente = new Cliente(bd);
+                    tratarOpcao(cliente, escolhaOpcao);
+                    break;
+                }
+                case 2: {
+                    Vendedor vendedor = new Vendedor(bd);
+                    tratarOpcao(vendedor, escolhaOpcao);
+                    break;
+                }
+                case 3: {
+                    Gerente gerente = new Gerente(bd);
+                    tratarOpcao(gerente, escolhaOpcao);
+                    break;
+                }
+                default: {
+                    Fornecedor fornecedor = new Fornecedor(bd);
+                    tratarOpcao(fornecedor, escolhaOpcao);
+                    break;
+                }
+            }
+    }
 }

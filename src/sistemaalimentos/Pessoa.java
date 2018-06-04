@@ -8,6 +8,12 @@ public class Pessoa {
     private int idPessoa;
     public String nome, dataNac, rg, cpf, usuario, senha;
     BD bd;
+    
+    public Pessoa(String nome, String usuario, String senha) {
+        this.nome = nome;
+        this.usuario = usuario;
+        this.senha = senha;
+    }
 
     public Pessoa(BD bd) {
         this.bd = bd;
@@ -31,9 +37,15 @@ public class Pessoa {
 
         System.out.println("Informe o CPF: ");
         this.cpf = entrada();
+        
+        System.out.println("Informe o Usuário: ");
+        this.usuario = entrada();
+        
+        System.out.println("Informe a Senha: ");
+        this.senha = entrada();
     }
 
-    public void atualizar(int idPessoa) {
+    public void atualizar() {
 
     }
 
@@ -41,7 +53,7 @@ public class Pessoa {
 
     }
 
-    public void deletar(int idPessoa) {
+    public void deletar() {
 
     }
 
