@@ -9,7 +9,8 @@ public class Pessoa {
     public String nome, dataNac, rg, cpf, usuario, senha;
     BD bd;
     
-    public Pessoa(String nome, String usuario, String senha) {
+    public Pessoa(BD bd, String nome, String usuario, String senha) {
+        this.bd = bd;
         this.nome = nome;
         this.usuario = usuario;
         this.senha = senha;
@@ -25,7 +26,6 @@ public class Pessoa {
     }
 
     public void inserir() {
-        System.out.println("Cadastro:");
         System.out.println("Informe o Nome: ");
         this.nome = entrada();
 
@@ -46,7 +46,7 @@ public class Pessoa {
     }
 
     public void atualizar() {
-
+        
     }
 
     public void consultar() {
@@ -59,5 +59,11 @@ public class Pessoa {
 
     public void listar() {
 
+    }
+    
+    @Override
+    public String toString() {
+        return "Nome: " + this.nome + ", Dt Nascimento: " + this.dataNac + ", RG: "
+                + this.rg + ", CPF: " + this.cpf;
     }
 }

@@ -6,4 +6,8 @@ public class Juridica extends Pessoa {
     public Juridica(BD bd) {
         super(bd);
     }
+    
+    public Juridica(BD bd, String nome, String usuario, String senha) {
+        super(bd, nome, usuario, senha);
+    }
 }

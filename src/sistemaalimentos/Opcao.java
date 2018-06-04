@@ -22,6 +22,8 @@ public class Opcao {
         System.out.println("    2 - Vendedor");
         System.out.println("    3 - Gerente");
         System.out.println("    4 - Fornecedor");
+        System.out.println("    0 - Sair");
+
     }
 
     public void visualizarOpcao() {
@@ -30,14 +32,14 @@ public class Opcao {
         System.out.println("    2 - Atualizar");
         System.out.println("    3 - Consultar");
         System.out.println("    4 - Deletar");
-        System.out.println("    5 - listar");
-        System.out.println("    0 - Sair");
+        System.out.println("    5 - Listar");
+        System.out.println("    0 - Voltar");
     }
 
     public int escolherPessoa() {
         entrada();
 
-        if (this.op <= 0 || this.op >= 5) {
+        if (this.op < 0 || this.op >= 5) {
             System.out.println("Opcao invalida! Tente novamente.");
             this.escolherPessoa();
         }
@@ -63,11 +65,22 @@ public class Opcao {
                 ps.inserir();
                 break;
             }
-            case 3: {
-                ps.consultar();
-                //ps.inserir();
+            
+            case 2: {
+                ps.atualizar();
                 break;
             }
+            
+            case 3: {
+                ps.consultar();
+                break;
+            }
+            
+            case 4: {
+                ps.deletar();
+                break;
+            }
+            
             case 5: {
                 ps.listar();
                 break;

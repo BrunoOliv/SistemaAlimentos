@@ -24,32 +24,54 @@ public class Autenticacao {
                 for (Cliente cliente : bd.cliente) {
                     if (user.equalsIgnoreCase(cliente.usuario) && pass.equalsIgnoreCase(cliente.senha)) {
                         System.out.println("Logado com sucesso!");
+                        System.out.println();
                         return;
                     }
                 }
                 System.out.println("Usuario ou senha invalida!");
+                System.out.println();
                 logar(bd, escolhaPessoa);
                 break;
             }
             case 2: {
-                
+                for (Vendedor vendedor : bd.vendedor) {
+                    if (user.equalsIgnoreCase(vendedor.usuario) && pass.equalsIgnoreCase(vendedor.senha)) {
+                        System.out.println("Logado com sucesso!");
+                        System.out.println();
+                        return;
+                    }
+                }
+                System.out.println("Usuario ou senha invalida!");
+                System.out.println();
+                logar(bd, escolhaPessoa);
                 break;
             }
             case 3: {
-                
+                for (Gerente gerente : bd.gerente) {
+                    if (user.equalsIgnoreCase(gerente.usuario) && pass.equalsIgnoreCase(gerente.senha)) {
+                        System.out.println("Logado com sucesso!");
+                        System.out.println();
+                        return;
+                    }
+                }
+                System.out.println("Usuario ou senha invalida!");
+                System.out.println();
+                logar(bd, escolhaPessoa);
                 break;
             }
             default: {
-                
+                for (Fornecedor fornecedor : bd.fornecedor) {
+                    if (user.equalsIgnoreCase(fornecedor.usuario) && pass.equalsIgnoreCase(fornecedor.senha)) {
+                        System.out.println("Logado com sucesso!");
+                        System.out.println();
+                        return;
+                    }
+                }
+                System.out.println("Usuario ou senha invalida!");
+                System.out.println();
+                logar(bd, escolhaPessoa);
                 break;
             }
         }
-        
-        /*if ("bruno".equalsIgnoreCase(this.user) && "123456".equalsIgnoreCase(this.pass)) {
-            System.out.println("Usuario logado com sucesso");
-        } else {
-            System.out.println("Usuario não logado! Tente novamente.");
-            logar();
-        }*/
     }
 }
