@@ -10,4 +10,5 @@ public class BD {
 	List<Fornecedor> fornecedor = new ArrayList<>();
         List<ProdutoLoja> produtoLoja = new ArrayList<>();
         List<Venda> venda = new ArrayList<>();
+        List<Mensalidade> mensalidade = new ArrayList<>();
 }
