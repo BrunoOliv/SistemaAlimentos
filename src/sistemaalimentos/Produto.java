@@ -16,12 +16,15 @@ public class Produto {
     public BD bd;
     Scanner sc;
     
+    public Produto() {
+        
+    }
+    
     public Produto(BD bd) {
         this.bd = bd;
     }
     
-    public Produto(BD bd, int idProduto, String descricao, float preco, int quantidade) {
-        this.idProduto = idProduto;
+    public Produto(String descricao, float preco, int quantidade) {
         this.descricao = descricao;
         this.preco = preco;
         this.quantidade = quantidade;

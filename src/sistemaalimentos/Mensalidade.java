@@ -13,6 +13,7 @@ import java.util.Scanner;
  */
 public class Mensalidade {
 
+    public static int i = 1;
     int idMensalidade;
     String descricao;
     String data;
@@ -21,14 +22,32 @@ public class Mensalidade {
     Cliente cliente;
     BD bd;
     Scanner sc;
-    
-    public Mensalidade(BD bd){
+
+    private static int incremento() {
+        return i++;
+    }
+
+    public Mensalidade(BD bd) {
         this.bd = bd;
     }
-    
+
+    public Mensalidade(String descricao, String data, float valor, boolean pagamento, Cliente cliente) {
+        this.idMensalidade = incremento();
+        this.descricao = descricao;
+        this.data = data;
+        this.valor = valor;
+        this.pagamento = pagamento;
+        this.cliente = cliente;
+    }
+
     public String entrada() {
         this.sc = new Scanner(System.in);
         return sc.nextLine();
+    }
+
+    public int entradaInt() {
+        Scanner sc = new Scanner(System.in);
+        return sc.nextInt();
     }
 
     private void inicializar() {
@@ -60,7 +79,7 @@ public class Mensalidade {
 
     public void inserir() {
         System.out.println("Inserir Mensalidade:");
-
+        this.idMensalidade = incremento();
         inicializar();
 
         boolean salvo = bd.mensalidade.add(this);
@@ -78,10 +97,10 @@ public class Mensalidade {
     }
 
     public void atualizar() {
-        System.out.print("Informe a descricao da mensalidade: ");
-        String descricao = entrada();
+        System.out.print("Informe o ID da Mensalidade: ");
+        int id = entradaInt();
         for (Mensalidade mensalidade : bd.mensalidade) {
-            if (descricao.equalsIgnoreCase(mensalidade.descricao)) {
+            if (id == mensalidade.idMensalidade) {
                 mensalidade.alterar();
                 return;
             }
@@ -90,10 +109,10 @@ public class Mensalidade {
     }
 
     public void consultar() {
-        System.out.print("Informe a descricao da mensalidade: ");
-        String descricao = entrada();
+        System.out.print("Informe o ID da Mensalidade: ");
+        int id = entradaInt();
         for (Mensalidade mensalidade : bd.mensalidade) {
-            if (descricao.equalsIgnoreCase(mensalidade.descricao)) {
+            if (id == mensalidade.idMensalidade) {
                 System.out.println(mensalidade.toString());
                 return;
             }
@@ -102,12 +121,16 @@ public class Mensalidade {
     }
 
     public void deletar() {
-        System.out.print("Informe a descricao da mensalidade: ");
-        String descricao = entrada();
+        System.out.print("Informe o ID da Mensalidade: ");
+        int id = entradaInt();
         for (Mensalidade mensalidade : bd.mensalidade) {
-            if (descricao.equalsIgnoreCase(mensalidade.descricao)) {
-                bd.mensalidade.remove(mensalidade);
-                System.out.println("Mensalidade removida com sucesso!");
+            if (id == mensalidade.idMensalidade) {
+                if (!mensalidade.pagamento) {
+                    bd.mensalidade.remove(mensalidade);
+                    System.out.println("A mensalidade foi removida com sucesso!");
+                } else {
+                    System.out.println("A mensalidade nao pode ser removida! O pagamento da mesma ja foi efetuado.");
+                }
                 return;
             }
         }
@@ -122,11 +145,11 @@ public class Mensalidade {
         }
         System.out.println();
     }
-    
+
     @Override
     public String toString() {
-        return "Descricao: " + this.descricao + ", Data: " + this.data
-                + ", Valor: " + this.valor + ", Pagamento: " + this.pagamento
-                + ", Cliente: " + this.cliente.nome;
+        return "idMensalidade: " + this.idMensalidade + ", Descricao: " + this.descricao
+                + ", Data: " + this.data + ", Valor: " + this.valor + ", Pagamento: "
+                + this.pagamento + ", Cliente: " + this.cliente.nome;
     }
 }

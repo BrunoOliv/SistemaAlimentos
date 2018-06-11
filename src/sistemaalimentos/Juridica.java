@@ -7,7 +7,7 @@ public class Juridica extends Pessoa {
         super(bd);
     }
     
-    public Juridica(BD bd, String nome, String usuario, String senha) {
-        super(bd, nome, usuario, senha);
+    public Juridica(BD bd, String nome, String dataNasc, String rg, String cpf, String usuario, String senha) {
+        super(bd, nome, dataNasc, rg, cpf, usuario, senha);
     }
 }

@@ -7,8 +7,8 @@ public class Cliente extends Fisica {
         super(bd);
     }
     
-    public Cliente(BD bd, String nome, String usuario, String senha) {
-        super(bd, nome, usuario, senha);
+    public Cliente(BD bd, String nome, String dataNasc, String rg, String cpf, String usuario, String senha) {
+        super(bd, nome, dataNasc, rg, cpf, usuario, senha);
     }
     
     @Override

@@ -6,7 +6,7 @@ public class Funcionario extends Fisica {
         super(bd);
     }
     
-    public Funcionario(BD bd, String nome, String usuario, String senha) {
-        super(bd, nome, usuario, senha);
+    public Funcionario(BD bd, String nome, String dataNasc, String rg, String cpf, String usuario, String senha) {
+        super(bd, nome, dataNasc, rg, cpf, usuario, senha);
     }
 }

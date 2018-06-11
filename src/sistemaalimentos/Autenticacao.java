@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Autenticacao {
 
-    String user, pass;
+    String user, pass, nome;
 
     public String entrada() {
         Scanner sc = new Scanner(System.in);
@@ -23,8 +23,18 @@ public class Autenticacao {
             case 1: {
                 for (Cliente cliente : bd.cliente) {
                     if (user.equalsIgnoreCase(cliente.usuario) && pass.equalsIgnoreCase(cliente.senha)) {
-                        System.out.println("Logado com sucesso!");
-                        System.out.println();
+                        for (Mensalidade mensalidade : bd.mensalidade) {
+                            if (cliente.nome.equalsIgnoreCase(mensalidade.cliente.nome) 
+                                    && mensalidade.pagamento == true 
+                                    && mensalidade.data.equalsIgnoreCase("05/06/2018") ) {
+                                System.out.println("Logado com sucesso!");
+                                System.out.println();
+                                this.nome = cliente.nome;
+                                return;
+                            }
+                        }
+                        System.out.println("Permissao negada! Mensalidade pendente.");
+                        logar(bd, escolhaPessoa);
                         return;
                     }
                 }
@@ -38,6 +48,7 @@ public class Autenticacao {
                     if (user.equalsIgnoreCase(vendedor.usuario) && pass.equalsIgnoreCase(vendedor.senha)) {
                         System.out.println("Logado com sucesso!");
                         System.out.println();
+                        this.nome = vendedor.nome;
                         return;
                     }
                 }
@@ -51,6 +62,7 @@ public class Autenticacao {
                     if (user.equalsIgnoreCase(gerente.usuario) && pass.equalsIgnoreCase(gerente.senha)) {
                         System.out.println("Logado com sucesso!");
                         System.out.println();
+                        this.nome = gerente.nome;
                         return;
                     }
                 }
@@ -64,6 +76,7 @@ public class Autenticacao {
                     if (user.equalsIgnoreCase(fornecedor.usuario) && pass.equalsIgnoreCase(fornecedor.senha)) {
                         System.out.println("Logado com sucesso!");
                         System.out.println();
+                        this.nome = fornecedor.nome;
                         return;
                     }
                 }

@@ -5,20 +5,21 @@
  */
 package sistemaalimentos;
 
-import java.util.Scanner;
-
 /**
  *
- * @author Bruno
+ * @author Bruno Oliveira
  */
-public class ProdutoLoja extends Produto {
-
-    public ProdutoLoja(BD bd) {
+public class ProdutoFornecedor extends Produto {
+    
+    String nomeFornecedor;
+    
+    public ProdutoFornecedor(BD bd) {
         super(bd);
     }
     
-    public ProdutoLoja(String descricao, float preco, int quantidade) {
+    public ProdutoFornecedor(String descricao, float preco, int quantidade, String nomeFornecedor) {
         super(descricao, preco, quantidade);
+        this.nomeFornecedor = nomeFornecedor;
     }
 
     private void inicializar() {
@@ -36,7 +37,7 @@ public class ProdutoLoja extends Produto {
 
         inicializar();
 
-        boolean salvo = bd.produtoLoja.add(this);
+        boolean salvo = bd.produtoFornecedor.add(this);
         if (salvo) {
             System.out.println("O produto foi armazenada!");
             System.out.println();
@@ -55,9 +56,9 @@ public class ProdutoLoja extends Produto {
     public void atualizar() {
         System.out.print("Informe a descricao do produto: ");
         String descricao = entrada();
-        for (ProdutoLoja produtoLoja : bd.produtoLoja) {
-            if (descricao.equalsIgnoreCase(produtoLoja.descricao)) {
-                produtoLoja.alterar();
+        for (ProdutoFornecedor produtoFornecedor : bd.produtoFornecedor) {
+            if (descricao.equalsIgnoreCase(produtoFornecedor.descricao)) {
+                produtoFornecedor.alterar();
                 return;
             }
         }
@@ -68,9 +69,9 @@ public class ProdutoLoja extends Produto {
     public void consultar() {
         System.out.print("Informe a descricao do produto: ");
         String descricao = entrada();
-        for (ProdutoLoja produtoLoja : bd.produtoLoja) {
-            if (descricao.equalsIgnoreCase(produtoLoja.descricao)) {
-                System.out.println(produtoLoja.toString());
+        for (ProdutoFornecedor produtoFornecedor : bd.produtoFornecedor) {
+            if (descricao.equalsIgnoreCase(produtoFornecedor.descricao)) {
+                System.out.println(produtoFornecedor.toString());
                 return;
             }
         }
@@ -81,9 +82,9 @@ public class ProdutoLoja extends Produto {
     public void deletar() {
         System.out.print("Informe a descricao do produto: ");
         String descricao = entrada();
-        for (ProdutoLoja produtoLoja : bd.produtoLoja) {
-            if (descricao.equalsIgnoreCase(produtoLoja.descricao)) {
-                bd.produtoLoja.remove(produtoLoja);
+        for (ProdutoFornecedor produtoFornecedor : bd.produtoFornecedor) {
+            if (descricao.equalsIgnoreCase(produtoFornecedor.descricao)) {
+                bd.produtoFornecedor.remove(produtoFornecedor);
                 System.out.println("Produto removido com sucesso!");
                 return;
             }
@@ -95,9 +96,16 @@ public class ProdutoLoja extends Produto {
     public void listar() {
         System.out.println("-- Lista de produtos --");
         System.out.println();
-        for (ProdutoLoja produtoLoja : bd.produtoLoja) {
-            System.out.println(produtoLoja.toString());
+        for (ProdutoFornecedor produtoFornecedor : bd.produtoFornecedor) {
+            System.out.println(produtoFornecedor.toString());
         }
         System.out.println();
+    }
+    
+    @Override
+    public String toString() {
+        return "Descricao: " + this.descricao + ", Preco: " 
+                + this.preco + ", Quantidade: " + this.quantidade 
+                + ", Fornecedor: " + this.nomeFornecedor;
     }
 }

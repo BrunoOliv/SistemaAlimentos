@@ -9,9 +9,12 @@ public class Pessoa {
     public String nome, dataNac, rg, cpf, usuario, senha;
     BD bd;
     
-    public Pessoa(BD bd, String nome, String usuario, String senha) {
+    public Pessoa(BD bd, String nome, String dataNasc, String rg, String cpf, String usuario, String senha) {
         this.bd = bd;
         this.nome = nome;
+        this.dataNac = dataNasc;
+        this.rg = rg;
+        this.cpf = cpf;
         this.usuario = usuario;
         this.senha = senha;
     }
